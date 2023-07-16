@@ -1,2 +1,3 @@
 class ItemOrder < ApplicationRecord
+
 end

@@ -24,11 +24,11 @@ Rails.application.routes.draw do
     get 'genres/update'
   end
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
+    get 'admin/items' => 'items#index'
+    get 'admin/items/new' => 'items#new'
     get 'items/create'
-    get 'items/show'
-    get 'items/edit'
+    get 'admin/items/:id' => 'items#show'
+    get 'admin/items/:id/edit' => 'items#edit'
     get 'items/update'
   end
   namespace :admin do
@@ -74,8 +74,8 @@ Rails.application.routes.draw do
     get 'registrations/create'
   end
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    get '/items' => 'items#index'
+    get 'items/:id' => 'items#show'
   end
   namespace :public do
     get 'homes/top'
