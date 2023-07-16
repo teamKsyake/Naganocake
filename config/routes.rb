@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :customers
   devise_for :admins
   namespace :admin do
@@ -51,7 +52,7 @@ Rails.application.routes.draw do
     get 'orders/complete_order'
   end
   namespace :public do
-    get 'cart_items/index'
+    get '/cart_items'=>'cart_items'
     get 'cart_items/update'
     get 'cart_items/destroy'
     get 'cart_items/destroy_all'
@@ -83,4 +84,6 @@ Rails.application.routes.draw do
   get 'homes/top'
   get 'homes/about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  
 end
