@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     get 'orders/complete_order'
   end
   namespace :public do
-    get '/cart_items'=>'cart_items'
+    get 'cart_items/index'
     get 'cart_items/update'
     get 'cart_items/destroy'
     get 'cart_items/destroy_all'
