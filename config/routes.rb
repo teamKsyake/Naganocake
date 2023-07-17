@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :customers
   devise_for :admins
   namespace :admin do
     get 'make_status/update'
