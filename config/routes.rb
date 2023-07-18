@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :customers
-  devise_for :admins
+  devise_for :admins, controllers: {
+  sessions: 'admin/sessions'
+  }
   namespace :admin do
     get 'make_status/update'
   end

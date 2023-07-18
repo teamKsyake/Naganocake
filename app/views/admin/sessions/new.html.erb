@@ -1,3 +1,17 @@
-<h1>Admin::Sessions#new</h1>
-<p>Find me in app/views/admin/sessions/new.html.erb</p>
-<%= render "admin/shared/links" %>
+<h2>管理者ログイン</h2>
+
+<%= form_with(scope: :admin, url: admin_session_path, method: :post) do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
