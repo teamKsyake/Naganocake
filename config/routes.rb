@@ -24,7 +24,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     # 顧客（一覧、詳細、編集、情報の更新）
 
     resources :orders, only: [:show, :update]
-    patch 'admin/orders/:id' => 'order_items#update'
+    patch 'admin/orders_items/:id' => 'order_items#update'
     # 注文詳細画面（ステータスの更新）
   end
 
@@ -89,7 +89,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     get 'orders/complete_order' => 'orders#complete_order'
     # 注文完了画面
 
-    resources :shippings, only:[:index, :edit, :create, :update, :destroy]
+    resources :address, only:[:index, :edit, :create, :update, :destroy]
     # 配送先登録（一覧、編集、登録、更新、削除）
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
