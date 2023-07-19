@@ -34,7 +34,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
+  
   scope module: :public do
 
     root to: 'homes#top'
@@ -75,6 +75,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 
     resources :address, only: [:index, :edit, :create, :update, :destroy]
     # 配送先登録（一覧、編集、登録、更新、削除）
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
