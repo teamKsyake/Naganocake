@@ -34,11 +34,11 @@ devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  
+
   scope module: :public do
 
     root to: 'homes#top'
-    get "/home/about" => "homes#about", as: "about"
+    get "/homes/about" => "homes#about", as: "about"
 
     resources :items, only: [:index, :show]
     # 商品（一覧、詳細）
