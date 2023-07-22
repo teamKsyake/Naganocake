@@ -14,5 +14,5 @@
  <p>販売ステータス</p>
   <%= f.select :is_available, [['販売中'],['販売停止中']], {sale: true, stop: false } %>
 
-  <%= f.submit '新規登録' %>
+  <%= f.submit '新規登録', class: "btn-success" %>
 <% end %>
