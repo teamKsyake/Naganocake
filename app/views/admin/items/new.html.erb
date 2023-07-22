@@ -8,7 +8,9 @@
  <p>商品説明</p>
   <%= f.text_area :introduction %>
  <p>ジャンル</p>
-  <>
+  <% form_with model: @genres do |f| %>
+   <%= f.select :genre %>
+  <% end %>
  <p>税抜価格</p>
   <%= f.number_field :price %>
  <p>販売ステータス</p>
