@@ -1,2 +1,18 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h1>商品編集</h1>
+
+ <%= form_with model: @item do |f| %>
+ <p>商品画像</p><!--画像がない場合の処理をする-->
+  <%= f.file_field :image, accept: 'image/*' %>
+ <p>商品名</p>
+  <%= f.text_field :name %>
+ <p>商品説明</p>
+  <%= f.text_area :introduction %>
+ <p>ジャンル</p>
+  <>
+ <p>税抜価格</p>
+  <%= f.number_field :price %>
+ <p>販売ステータス</p>
+  <%= f.select :is_available, [['販売中'],['販売停止中']], {sale: true, stop: false } %>
+
+  <%= f.submit '変更を保存', class: "btn-success" %>
+<% end %>

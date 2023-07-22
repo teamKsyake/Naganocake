@@ -26,17 +26,11 @@
                 <td class="align-middle"><%= item.id %></td>
                 <td class="align-middle"><%= link_to admin_item_path(item.id) do %>
                   <u><%= item.name %></u>
-                </td>
-                <% end %>
-                <td class="align-middle"><%= item.price_excluding_tax %></td>
-                <td class="align-middle"><%= item.genre.name %></td>
-                <td class="align-middle">
-                  <% if item.sales_status == true %>
-                    <p class="text-succes font-weight-hold">販売中</p>
-                  <% else %>
-                    <p class="text-danger font-weight-bold">販売停止中</p>
                   <% end %>
                 </td>
+                <td class="align-middle"><%= item.price %></td>
+                <td class="align-middle"><%= item.genre.name %></td>
+                <td class="align-middle"><%= is_available %></td>
               </tr>
             </tbody>
             <% end %>
@@ -46,3 +40,4 @@
     </div>
   </div>
 </div>
+
