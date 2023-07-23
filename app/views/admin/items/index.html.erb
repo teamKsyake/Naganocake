@@ -9,8 +9,8 @@
         <% end %>
       </div>
       <div class="row">
-        <div class="col-sm-10 px-sm-0 mx-auto md-5">
-          <table class="table rext-center abmin-items md-5">
+        <div class="col-sm-10">
+          <table class="table rext-center abmin-items">
             <thead>
               <tr>
                 <th>商品ID</th>
@@ -20,20 +20,28 @@
               <th>ステータス</th>
               </tr>
             </thead>
-            <%= @items.each do |item| %>
+
             <tbody>
+              <% @items.each do |item| %>
               <tr>
                 <td class="align-middle"><%= item.id %></td>
-                <td class="align-middle"><%= link_to admin_item_path(item.id) do %>
-                  <u><%= item.name %></u>
+                <td class="align-middle">
+                  <%= link_to admin_item_path(item.id) do %>
+                   <u><%= item.name %></u>
                   <% end %>
                 </td>
                 <td class="align-middle"><%= item.price %></td>
                 <td class="align-middle"><%= item.genre.name %></td>
-                <td class="align-middle"><%= is_available %></td>
+                <td class="align-middle">
+                  <% if item.is_available %>
+                   <p>販売中</p>
+                  <% else %>
+                   <p>販売停止中</p>
+                  <% end %>
+                </td>
               </tr>
+              <% end %>
             </tbody>
-            <% end %>
           </table>
         <%= paginate @items %>
       </div>

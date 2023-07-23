@@ -1,6 +1,6 @@
 <h1>商品編集</h1>
 
- <%= form_with model: @item do |f| %>
+ <%= form_with(model: @item, url: admin_item_path(@item), local: true) do |f| %>
  <p>商品画像</p><!--画像がない場合の処理をする-->
   <%= f.file_field :image, accept: 'image/*' %>
  <p>商品名</p>
@@ -8,7 +8,7 @@
  <p>商品説明</p>
   <%= f.text_area :introduction %>
  <p>ジャンル</p>
-  <>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択してください" %>
  <p>税抜価格</p>
   <%= f.number_field :price %>
  <p>販売ステータス</p>

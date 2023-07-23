@@ -21,12 +21,12 @@ module WorkGithub
   end
 end
 
-module NaganoCake
-  class Application < Rails::Application
+# module NaganoCake
+#   class Application < Rails::Application
 
-    config.i18n.default_locale = :ja
+#     config.i18n.default_locale = :ja
 
-  end
-end
+#   end
+# end
 
 
