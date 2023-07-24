@@ -1,54 +1,42 @@
-<!--/public/customers/show-->
-<h1>マイページ</h1>
+<!-- /public/customers/show.html.erb -->
+<h4>マイページ</h4>
 
-<h2>登録情報</h2>
+<% if @customer %>
+  <strong>登録情報</strong>
+  <p2><%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %></p2>
 
-<body>
   <table class="table">
-    <thead>
-      <tr>
-        <th>氏名</th>
-        <th>カナ</th>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>電話番号</th>
-        <th>メールアドレス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-
-    <!--<tr>-->
-    <!--  <th>氏名</th>-->
-    <!--  <td></td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--  <th>カナ</th>-->
-    <!--  <td></td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--  <th>郵便番号</th>-->
-    <!--  <td></td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--  <th>住所</th>-->
-    <!--  <td></td>-->
-    <!--</td>-->
-    <!--<tr>-->
-    <!--  <th>電話番号</th>-->
-    <!--  <td></td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--  <th>メールアドレス</th>-->
-    <!--  <td></td>-->
-    <!--</tr>-->
+    <tr>
+      <th>氏名</th>
+      <td><%= @customer.last_name + @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th>カナ</th>
+      <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @customer.postcode %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
   </table>
-</body>
+<% else %>
+  <p>顧客情報が見つかりません。</p>
+<% end %>
+
+<strong>配送先</strong>
+<p><%= link_to "一覧を見る", address_index_path, class: "btn btn-primary" %></p>
+
+<strong>注文履歴</strong>
+<p><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></p>
