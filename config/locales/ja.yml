@@ -1,6 +1,0 @@
-ja:
-    enums:
-      item:
-        is_available:
-          stop: "販売停止中"
-          sale: "販売中"

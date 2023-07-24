@@ -1,14 +1,24 @@
 <h1>商品詳細</h1>
- <div><%= image_tag item.image, size: "100x100"%></div>
+ <div>
+  <%# if @item.image.attached? %>
+   <%= image_tag @item.image, size: "100x100" %>
+  <%# else %>
+   <%#= image_tag 'about-img', size: "100x100" %>
+  <%# end %>
+ </div>
  <div>商品名</div>
   <%= @item.name %>
  <div>商品説明</div>
   <%= @item.introduction %>
  <div>ジャンル</div>
-  <%= %>
+  <%= Genre.find(@item.genre_id).name %>
  <div>税込価格(税抜価格)</div>
   <p><%= @item.price %>円</p>
  <div>販売ステータス</div>
-  <%= @item.is_available %>
+  <% if @item.is_available %>
+   <p>販売中</p>
+  <% else %>
+   <p>販売停止中</p>
+  <% end %>
 
  <div><%= link_to "編集する", edit_admin_item_path, class: "btn btn-primary" %></div>
