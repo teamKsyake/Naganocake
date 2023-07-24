@@ -24,6 +24,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'admin/item_orders/:id' => 'item_orders#update'
     # 注文詳細画面（ステータスの更新）
 
+    get 'admin/search' => 'searchs#search', as: 'search'
+
   end
 
 
