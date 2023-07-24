@@ -43,11 +43,13 @@ class Public::CustomersController < ApplicationController
       @customer.update(withdrawn: true)
       sign_out @customer # 退会処理後に自動でログアウトさせる
       redirect_to customers_withdrawal_path, notice: "退会処理が完了しました。ご利用いただきありがとうございました。"
+
   end
 end
 
 
   private
+
 
   def customer_params
     params.require(:customer).permit(:email, :password)

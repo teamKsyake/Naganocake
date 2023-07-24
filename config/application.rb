@@ -20,3 +20,13 @@ module WorkGithub
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+# module NaganoCake
+#   class Application < Rails::Application
+
+#     config.i18n.default_locale = :ja
+
+#   end
+# end
+
+

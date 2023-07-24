@@ -1,8 +1,45 @@
 <div class="container">
-  <span>Welcome!!</span>
-</div>
-<div class="home-box mx-auto my-3" >
-  <p class="home-text">ようこそ、長野CAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。
-  </p>
+  <div class="row">
+    <div class="col-2">
+      <%= render "admin/genres/sidebar", genres: @genres %>
+      <!-- ジャンル選択を表示する -->
+    </div>
+    <div class="col-10">
+      <div class="jumbotron">
+        <div class="welcome-text">
+          <div class="text-center">
+            <p>
+              ようこそ、ながのケーキへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-item row">
+  <h3 class="title">新着商品</h3>
+      <div class="item-wrap">
+        <% @items.first(4).each do |item| %>
+        <!--新着商品を４つ表示する-->
+          <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+            <%= link_to item_path(item) do %>
+              <div class="img-wrap"><%= attachment_image_tag(item, :image , width: "100%", heidht: "200px",fallback: "no_image.jpg") %></div>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= item.name %></p>
+              <% if item.is_available == true %>
+                <p class="card-text"><%= item.price %>￥（税抜き）</p>
+              <% else %>
+                <p class="card-text text-danger">販売停止中</p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="all-items-show-button text-right"><%= link_to "全ての商品を見る>", items_path %></div>
 </div>

@@ -24,6 +24,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'admin/item_orders/:id' => 'item_orders#update'
     # 注文詳細画面（ステータスの更新）
 
+    get 'admin/search' => 'searchs#search', as: 'search'
+
   end
 
 
@@ -34,10 +36,11 @@ devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  
   scope module: :public do
 
     root to: 'homes#top'
-    get "/home/about" => "homes#about", as: "about"
+    get "/homes/about" => "homes#about", as: "about"
 
     resources :items, only: [:index, :show]
     # 商品（一覧、詳細）
