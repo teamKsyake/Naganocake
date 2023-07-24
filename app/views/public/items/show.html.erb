@@ -1,2 +1,10 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= image_tag @item.get_image, size: "100x100" %>
+<h3><%= @item.name %></h3>
+<div><%= @item.introduction %></div>
+<div><p>￥<%= (@item.price*1.1).round %>(税込)</p></div>
+<div>
+  <% form_with(model: @cart_item, url: cart_items_path, local: true) do |f| %>
+    <%= f.hidden_field :cart
+    <%= f.select :amount, *[1..10], prompt: "個数選択" %>
+  <% end %>
+</div>
