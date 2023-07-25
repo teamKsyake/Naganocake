@@ -4,7 +4,7 @@
       <% if admin_signed_in? %>
         <%= link_to "NaganoCake", admin_root_path, class:"header-title navbar-brand" %>
       <% else %>
-        <%= link_to "NaganaCake", root_path, class:"header-title navbar-brand btn btn-success" %>
+        <%= link_to "NaganoCake", root_path, class:"header-title navbar-brand btn btn-success" %>
       <% end %>
        <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
           <% if customer_signed_in? %>
           <!--customerログイン時に表示されるheader-->
             <li class="nav-item active">
-              <span class="nav-link text-dark">ようこそ<%= last_name(current_customer)%>さん</span>
+              <span class="nav-link text-dark">ようこそ<%= current_customer.last_name %>さん</span>
             </li>
             <li class="nav-item">
               <%= link_to "マイページ", customers_mypage_path(current_customer), class: "btn btn-outline-secondary mx-3 my-1"%>
@@ -26,7 +26,7 @@
               <%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary mx-3 my-1" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", customers_sign_out, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
             </li>
 
           <% elsif admin_signed_in? %>
