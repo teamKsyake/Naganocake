@@ -1,2 +1,15 @@
-<h1>Public::Customers#check</h1>
-<p>Find me in app/views/public/customers/check.html.erb</p>
+<!-- app/views/public/customers/check.html.erb -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="my-5">本当に退会しますか</h3>
+      <p><small>退会すると、会員登録情報や<br>
+      <p>これまでの購入履歴が閲覧できなくなります。</p>
+      <p>退会する場合は、「退会する」をクリックしてください。</small></p>
+      <div class="d-flex">
+        <%= link_to "退会しない", customers_mypage_path, class: "btn btn-secondary" %>
+        <%= button_to "退会する", customers_withdrawal_path, method: :patch, class: "btn btn-danger mr-2", data: { confirm: '本当に退会しますか？' } %>
+      </div>
+    </div>
+  </div>
+</div>

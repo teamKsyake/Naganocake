@@ -1,7 +1,7 @@
 <h1>商品詳細</h1>
  <div>
   <%# if @item.image.attached? %>
-   <%= image_tag @item.image, size: "100x100" %>
+   <%= image_tag @item.get_image, size: "100x100" %>
   <%# else %>
    <%#= image_tag 'about-img', size: "100x100" %>
   <%# end %>

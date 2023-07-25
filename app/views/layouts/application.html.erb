@@ -15,24 +15,15 @@
     <div id="wrapper">
       <%= render 'layouts/header' %>
       <main>
-
-        <div class="container">
+        <div class="container mt-5">
           <div id="flash">
-            <%#= remder "layouts/flash" %>
+          <%#= remder "layouts/flash" %>
           </div>
-          <%= yield %>
+         <%= yield %>
         </div>
       </main>
-      <footer>
-        <div class='container mt-5'>
-          <div class='row'>
-             <div class='mx-auto'>
-                <div class="fixed-bottom mx-0 bg-black bg-opacity-75 text-center text-dark">
-                   <%= render 'layouts/footer' %>
-                </div>
-             </div>
-          </div>
-        </div>
+      <footer class="fixed-bottom mx-0 bg-black bg-opacity-75 text-center text-dark">
+        <%= render 'layouts/footer' %>
       </footer>
     </div>
   </body>
