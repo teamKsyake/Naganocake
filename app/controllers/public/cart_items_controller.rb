@@ -22,7 +22,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = CartItem.find(params[:id])
     if cart_item.destroy
-      flash[:notice] ="カート内の商品を空にしました"
+      flash[:notice] ="選択された商品を削除しました"
       redirect_to cart_items_path
     else
       render action: :index
