@@ -1,14 +1,38 @@
-<%= image_tag @item.get_image, size: "100x100" %>
-<h3><%= @item.name %></h3>
-<div><%= @item.introduction %></div>
-<div><p>￥<%= (@item.price*1.1).round %>(税込)</p></div>
-<div>
-  <% if @item.is_available == true %>
-    <%= form_with(model: @cart_item, url: cart_items_path, method: :post,local: true) do |f| %>
-      <%= f.label :amount, "個数選択" %>
-        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit "カートに入れる" %>
-    <% end %>
-  <% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5">
+      <%= image_tag @item.get_image, size: "300x200", style: "object-fit: cover;" %>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <h3><%= @item.name %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <%= @item.introduction %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <p>￥<%= (@item.price*1.1).round %>(税込)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <% if @item.is_available == true %>
+            <%= form_with(model: @cart_item, url: cart_items_path, method: :post,local: true) do |f| %>
+              <%= f.label :amount, "個数選択" %>
+                <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit "カートに入れる" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
