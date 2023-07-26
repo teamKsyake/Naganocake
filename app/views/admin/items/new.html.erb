@@ -22,7 +22,7 @@
      <p>商品名</p>
     </div>
     <div class="col-sm-8 mb-3">
-     <%= f.text_field :name %>
+     <%= f.text_field :name, size: "40" %>
     </div>
    </div>
 
@@ -31,7 +31,7 @@
      <p>商品説明</p>
     </div>
     <div class="col-sm-8 mb-3">
-     <%= f.text_area :introduction %>
+     <%= f.text_area :introduction, size: "40x5" %>
     </div>
    </div>
 
@@ -57,15 +57,14 @@
     <div class="col-sm-4">
      <p>販売ステータス</p>
     </div>
-    <div class="col-sm-8 mb-3">
+    <div class="col-sm-8 mb-5">
      <%= f.select :is_available, [['販売中',1],['販売停止中',0]] %>
     </div>
    </div>
 
-   <%= f.submit '新規登録', class: "btn-success" %>
+   <%= f.submit '新規登録', class: "btn btn-success" %>
 
    <% end %>
-  </div>
   </div>
  </div>
 </div>
