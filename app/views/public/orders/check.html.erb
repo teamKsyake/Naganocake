@@ -1,2 +1,36 @@
-<h1>Public::Orders#check</h1>
-<p>Find me in app/views/public/orders/check.html.erb</p>
+<h2>注文情報確認</h2>
+
+<!-- 注文内容の表示 -->
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+  <!-- 注文内容をループで表示 -->
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= item.product_name %></td>
+      <td><%= item.unit_price_with_tax %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.subtotal %></td>
+    </tr>
+  <% end %>
+  <!-- 送料や合計金額を表示 -->
+  <tr>
+    <td colspan="3">送料：</td>
+    <td><%= @order.postage %></td>
+  </tr>
+  <tr>
+    <td colspan="3">商品合計：</td>
+    <td><%= @order.total_amount %></td>
+  </tr>
+  <tr>
+    <td colspan="3">請求金額：</td>
+    <td><%= @order.total_amount + @order.postage %></td>
+  </tr>
+</table>
+
+<!-- 注文を確定するボタン -->
+<%= button_to "注文を確定する", public_complete_order_path(@order), method: :patch %>
