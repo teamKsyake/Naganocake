@@ -36,7 +36,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
+  
   scope module: :public do
 
     root to: 'homes#top'
@@ -54,10 +54,10 @@ devise_for :customers, skip: [:passwords], controllers: {
     patch 'customers/information/update' => 'customers#update'
     # 顧客の登録情報更新
 
-    get 'customers/check' => 'customers#check'
+    get 'customers/check' => 'customers#check', as: 'customers_check'
     # 顧客の退会確認画面
 
-    patch 'customers/withdrawal' => 'customers#withdrawal'
+    get 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     # 顧客の退会処理(ステータスの更新)
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
