@@ -1,9 +1,10 @@
 class Order < ApplicationRecord
   has_many :item_orders, dependent: :destroy
   belongs_to :customer
+  
+  enum payment_method: { credit_card: 0, transfer: 1 }
 
-  enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
-  enum status: { new_order: 0, checked: 1, completed: 2 }
+  enum status: { awaiting_payment: 0, confirmed_payment: 1, in_production: 2, preparing_to_ship: 3, done: 4 }
 
   has_many :cart_items
   # カート内の商品との関連を定義する
@@ -18,8 +19,6 @@ class Order < ApplicationRecord
     total_amount
  end
 
-  # 注文ステータス
-  enum status: {"入金待ち" =>0, "入金確認" =>1, "制作中" =>2, "発送準備中" =>3, "発送済み" =>4}
 
   # 注文商品の個数小計
   def total_count
@@ -34,8 +33,8 @@ class Order < ApplicationRecord
   # 注文商品の合計金額
   def item_sum
     total = 0
-    order_items.each do |order_item|
-      total += order_item.subtotal_price
+    item_orders.each do |item_order|
+      total += item_order.subtotal_price
     end
     total
   end
@@ -44,8 +43,8 @@ class Order < ApplicationRecord
   # 請求金額合計（送料込み）
   def total_price
     total = 0
-    order_items.each do |order_item|
-      total += order_item.subtotal_price
+    item_orders.each do |item_order|
+      total += item_order.subtotal_price
     end
     total + postage
   end

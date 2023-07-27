@@ -19,13 +19,20 @@
               </tr>
               <tr>
                 <th class="col-xs-3 row-title">支払い方法</th>
-                <td class="col-xs-9"><%= @order.payment_method %></td>
+                <td class="col-xs-9">
+                  <% if @order.payment_method == 0 %>
+                    <p>クレジットカード</p>
+                  <% else %>
+                    <p>銀行振込</p>
+                  <% end %>
+                </td>
+
               </tr>
               <tr>
                 <th class="col-xs-3 row-title">注文ステータス</th>
                 <td class="col-xs-9">
-                  <%= form_with model: [:admin, @order] do |f| %>
-                    <%= f.select :status, Order.statuses.keys %>
+                  <%= form_with model: [:admin, @order], method: :patch do |f| %>
+                    <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
                     <%= f.submit '更新', class:"btn btn-success" %>
                   <% end %>
                 </td>
@@ -47,22 +54,23 @@
             </tr>
           </thead>
           <tbody>
-            <% @order_items.each do |order_item| %>
-              <tr>
-                <td><%= order_item.item.name %></td>
-                <td><%= order_item.ordered_price %></td>
-                <td><%= order_item.count %></td>
-                <td><%= order_item.subtotal_price %>円</td>
-                <%= form_with [:admin, order_item] do |f| %>
-                <td>
-                  <%= f.submit :item_status, OrderItem.item_atatuses.keys.to_a %>
-                </td>
-                <td>
-                  <%= f.submit '更新', class:"btn btn-success" %>
-                </td>
-                <% end %>
-              </tr>
-            <% end %>
+
+        <% @item_oders.each do |item_order| %>
+       <tr>
+        <td><%= item_order.item.name %></td>
+        <td><%= item_order.price %></td>
+        <td><%= item_order.amount %></td>
+        <td><%= item_order.subtotal_price %>円</td>
+        <%= form_with model: [:admin, @item_orders], method: :patch do |f| %>
+        <td>
+         <%= f.select :production_status, ItemOrder.production_statuses.keys.map {|k| [I18n.t("enums.item_order.production_status.#{k}"), k]} %>
+        </td>
+        <td>
+         <%= f.submit '更新', class:"btn btn-success" %>
+        </td>
+        <% end %>
+       </tr>
+      <% end %>
           </tbody>
         </table>
       </div>
@@ -71,7 +79,7 @@
           <tbody>
             <tr>
               <th class="col-xs-3 row-title">合計金額</th>
-              <td class="col-xs-9"><%= @order.total_amount-@order.postage %>円</td>
+              <td class="col-xs-9"><%= @order.item_sum %>円</td>
             </tr>
             <tr>
               <th class="col-xs-3 row-title">送料</th>
@@ -79,7 +87,7 @@
             </tr>
             <tr>
               <th class="col-xs-3 row-title">請求金額合計</th>
-              <td class="col-xs-9"><%= @order.total_amount %>円</td>
+              <td class="col-xs-9"><%= @order.total_price %>円</td>
             </tr>
           </tbody>
         </table>

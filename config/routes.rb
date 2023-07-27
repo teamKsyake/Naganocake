@@ -21,6 +21,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     resources :orders, only: [:show, :update]
 
+    resources :item_orders, only: [:update]
+
     patch 'admin/item_orders/:id' => 'item_orders#update'
     # 注文詳細画面（ステータスの更新）
 

@@ -10,8 +10,8 @@ ja:
         in_production: "製作中"
         preparing_to_ship: "発送準備中"
         done: "発送済"
-    order_detail:
-      making_status:
+    item_order:
+      production_status:
         cannot_start: "着手不可"
         pending_production: "製作待ち"
         in_production: "製作中"

@@ -2,8 +2,11 @@
 <%= form_with(model: @order, url: orders_check_path, method: :post) do |form| %>
   <div>
     <h2 style="font-size: 1.2rem; color: #666;">支払方法</h2>
-    <%= form.radio_button :payment_method, "クレジットカード" %> クレジットカード<br>
-    <%= form.radio_button :payment_method, "銀行振込" %> 銀行振込<br>
+    <%= form.radio_button :payment_method, "credit_card" %>
+    <%= form.label :payment_method_credit_card, "クレジットカード" %>
+
+    <%= form.radio_button :payment_method, "transfer" %>
+    <%= form.label :payment_method_transfer, "銀行振込" %>
   </div>
   <div>
     <h4 class="font-weight-bold">お届け先</h4>
