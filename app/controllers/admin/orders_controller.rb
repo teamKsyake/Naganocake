@@ -24,12 +24,12 @@ class Admin::OrdersController < ApplicationController
     end
     flash[:notice] = "You have updated status successfully."
       redirect_to admin_order_path(order.id)
-    end
+  end
 
-    def show
-      @order = Order.find(params[:id])
-      @order_items = @order.item_orders
-    end
+  def show
+    @order = Order.find(params[:id])
+    @item_oders = @order.item_orders
+  end
 
     private
 
