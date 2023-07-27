@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.where(is_available: true)
+    @items = Item.all.page(params[:page]).per(8)
   end
 
   def show
@@ -12,7 +12,7 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :image, :price)
   end
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:costomer_id, :item_id, :amount)
   end
