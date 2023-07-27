@@ -28,23 +28,23 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_withdrawal == false)
   end
-  
-  
+
+
   # カート内商品合計金額
   def cart_item_sum
     total = 0
     cart_items.each do |cart_item|
       total += cart_item.subtotal_price
-    end 
+    end
     total
   end
-  
+
   # カート内商品合計個数
   def cart_total_count
     count = 0
     cart_items.each do |cart_item|
       count += cart_item.count
-    end 
+    end
     count
-  end 
-end 
+  end
+end
