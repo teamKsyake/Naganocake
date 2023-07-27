@@ -50,6 +50,9 @@ class Order < ApplicationRecord
     total + postage
   end
 
+  def address_display
+    "〒"+postcode+address+name
+  end
   # 郵便番号（ハイフンあり７桁）
   # VALID_ZIP_CODE = /\A/\d{3}[-]\d{4}\z
   # with_options presence: true do
