@@ -50,12 +50,12 @@
             <% @order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.item.name %></td>
-                <td><%= order_item.ordered_price %></td>
-                <td><%= order_item.count %></td>
-                <td><%= order_item.subtotal_price %>円</td>
-                <%= form_with [:admin, order_item] do |f| %>
+                <td><%= order_item.price %></td>
+                <td><%= order_item.amount %></td>
+                <td><%#= order_item.subtotal_price %>円</td>
+                <%= form_with model: [:admin, order_item],url: admin_path(order_item.id),method: :patch do |f| %>
                 <td>
-                  <%= f.submit :item_status, OrderItem.item_atatuses.keys.to_a %>
+                  <%= f.select :production_status, ItemOrder.production_statuses.keys%>
                 </td>
                 <td>
                   <%= f.submit '更新', class:"btn btn-success" %>
