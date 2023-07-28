@@ -77,7 +77,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     resources :orders, only: [:new, :create, :index, :show]
     # 注文情報入力、確定、履歴、履歴詳細
 
-    resources :address, only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     # 配送先登録（一覧、編集、登録、更新、削除）
 
 
