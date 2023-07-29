@@ -17,18 +17,21 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.update(order_params)
     order = Order.find(params[:id])
-    if order.status == "入金確認"
-      order.order_items.each do |order_item|
-        order_item.update(item_status: "製作待ち")
+    # 注文ステータス[入金確認]=>製作ステータス[製作待ち]
+    if order.status == "confirmed_payment"
+      order.item_orders.each do |order_item|
+        order_item.update(production_status: "pending_production")
       end
     end
     flash[:notice] = "You have updated status successfully."
       redirect_to admin_order_path(order.id)
+    
   end
 
   def show
     @order = Order.find(params[:id])
     @item_orders = @order.item_orders
+
   end
 
   private

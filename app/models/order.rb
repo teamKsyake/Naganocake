@@ -1,6 +1,11 @@
 class Order < ApplicationRecord
-  has_many :item_orders, dependent: :destroy
   belongs_to :customer
+
+  has_many :item_orders, dependent: :destroy
+  
+  validates :postcode, length: {is: 7}, numericality: { only_integer: true }
+
+
 
   enum payment_method: { credit_card: 0, transfer: 1 }
 

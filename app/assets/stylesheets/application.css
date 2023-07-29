@@ -13,3 +13,117 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import 'font-awesome-spockets';
+ @import 'font-awesome';
+ /*@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');*/
+
+ * {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+ }
+
+ body,
+ #wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+ }
+
+ header {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background-color: #BC8F8F;
+ }
+
+ .header-title{
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 30px;
+ }
+
+ main{
+  padding-top: 80px;
+ }
+
+ /* Footer */
+
+ footer {
+  min-height: 50px;
+  background: #BC8F8F;
+  color: white;
+  /*padding: 2rem 0;*/
+  /*margin-top: auto;*/
+ }
+
+ .nav-item {
+  font-family: "Neuzeit Office Soft Rounded", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+ }
+
+.relative {
+ position: telative;
+ width: 600px;
+}
+
+/*.container {*/
+/* height: 450px;*/
+/* border: 1px solid #000;*/
+/* display: flex;*/
+/* justify-content: center;*/
+/* align-items: flex-start;*/
+/* background-image:*/
+/* url("/images/wood.jpg");*/
+/* background-size: cover;*/
+/* background-position: center;*/
+/*}*/
+
+/*.text {*/
+/* font-size: 24px;*/
+/* color: #fff;*/
+/*}*/
+
+/*.wood-container {*/
+ /*background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0)),image-url('wood.jpg');*/
+ /*height: 600px;*/
+ /*background-size: cover;*/
+/*}*/
+
+/*.text-center {*/
+/*  font-size: 16px;*/
+/*  color: #A52A2A;*/
+/*}*/
+
+.centering_parent {
+    padding: 30px;              /* 余白指定 */
+    text-align:  center;        /* 中央寄せ */
+    background-color: #DCDCDC;    /* 背景色指定 */
+    height: 400px;              /* 高さ指定 */
+}
+
+.centering_item {
+    background-color: #B3424A;  /* 背景色指定 */
+}
+
+.label {
+ display: inline-brock;
+ text-align: right;
+ width: 300px;
+}
+
+.input[type="email"] {
+ width: 300px;
+ height: 40px;
+}
+
+.input[type="password"] {
+ width: 300px;
+ height: 40px;
+}
+

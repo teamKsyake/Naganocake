@@ -1,46 +1,45 @@
-<!-- /public/customers/show.html.erb -->
-<h4>マイページ</h4>
+<!--/public/customers/show.html.erb -->
+<div class="container">
+  <h2 class="my-5">マイページ</h2>
+  <div class="row">
+    <strong>登録情報</strong>
+    <p><%= link_to "編集する",customers_information_edit_path, class:"btn btn-success ml-5"%></p>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name + @customer.first_name%></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode%></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address%></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number%></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email%></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mr-5">
+      <strong>配送先</strong>
+      <p><%= link_to "一覧を見る",addresses_path, class:"btn btn-primary"%></p>
+    </div>
+    <div class="ml-5">
+      <strong>注文履歴</strong>
+      <p><%= link_to "一覧を見る", orders_path,class:"btn btn-primary"%></p>
+    </div>
 
-
-<% if @customer %>
- <strong>登録情報</strong>
- <p2><%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %></p2>
-
-
- <table class="table">
-  <tr>
-   <th>氏名</th>
-   <td><%= @customer.last_name + @customer.first_name %></td>
-  </tr>
-  <tr>
-   <th>カナ</th>
-   <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-   <th>郵便番号</th>
-   <td><%= @customer.postcode %></td>
-  </tr>
-  <tr>
-   <th>住所</th>
-   <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-   <th>電話番号</th>
-   <td><%= @customer.phone_number %></td>
-  </tr>
-  <tr>
-   <th>メールアドレス</th>
-   <td><%= @customer.email %></td>
-  </tr>
- </table>
-<% else %>
- <p>顧客情報が見つかりません。</p>
-<% end %>
-
-
-<strong>配送先</strong>
-<p><%= link_to "一覧を見る", address_index_path, class: "btn btn-primary" %></p>
-
-
-<strong>注文履歴</strong>
-<p><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></p>
+  </div>
+</div>
