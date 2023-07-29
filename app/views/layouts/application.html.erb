@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WorkGithub</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nagano Cake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/91172857dc.js" crossorigin="anonymous"></script>
+    <!--fontawesomeがkitcodeで導入-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render 'layouts/header' %>
+      <main>
+        <div class="container mt-5">
+          <div id="flash">
+          <%#= remder "layouts/flash" %>
+          </div>
+         <%= yield %>
+        </div>
+      </main>
+      <footer class="fixed-bottom mx-0 bg-black bg-opacity-75 text-center text-dark">
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>

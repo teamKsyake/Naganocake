@@ -1,2 +1,70 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class-"row">
+    <h4 class="cart-index-title bg-light d-inline px-4">ショッピングカート</h4>
+
+    <!--サクセスメッセージを表示する-->
+    <!--<%# if flash[:notice] %>-->
+    <!--<p class="success-message"><%#= flash[:notice] %></p>-->
+    <!--<%# end %>-->
+
+    <div class="btn-box text-right pb-2">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class:"btn btn-danger" %>
+    </div>
+    <!--カート内商品一覧を表示する-->
+    <div class="cart-item-table-row">
+      <table class="table table-bordered border-dark">
+        <!--<thead class="table-light">-->
+          <!--<span class="border border-dark">-->
+            <tr>
+              <th class="active">商品名</th>
+              <th class="active text-right">単価（税込）</th>
+              <th class="active text-right">数量</th>
+              <th class="active text-right">小計</th>
+              <th class="active"></th>
+            </tr>
+          <!--</span>-->
+        <!--</thead>-->
+        <tbody>
+          <% @customer.cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td class="text-right"><%= cart_item.item.with_tax_price %>円</td>
+              <!--消費税を求めるメソッドを商品モデルに定義しています。-->
+              <td class="text-right">
+                <%= form_for cart_item , html: {class:"form-inline"} do |f| %>
+                  <div class="form-group-right">
+                    <%= f.select :amount,(1..10).to_a, {}, class: "form-control" %>
+                    <%= f.submit "変更", class:"btn btn-success" %>
+                  </div>
+                <% end %>
+              </td>
+              <td class="text-right"><%= cart_item.subtotal_price %>円</td>
+              <!--小計を求めるメソッドをカート内商品モデルに定義しています。-->
+              <td class="text-right"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="cart-total-table row pb-3">
+      <div class="col-xs-8 return-shopping-btn-wrapper"><%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %></div>
+      <div class="col-xs-4">
+        <table align="right">
+          <table class="table table-bordered bg-light">
+            <tbody>
+              <tr>
+         <th class="active">合計金額</th>
+       <td class="text-right"><%= @customer.cart_item_sum %>円</td>
+        <!--カート内商品合計金額を求めるメソッドを会員モデルに定義しています。-->
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  <% if current_customer.cart_items.present? %>
+  <div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mx-auto text-center md-3">
+   <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success" %>
+  </div>
+  <% end %>
+ </div>
+</div>

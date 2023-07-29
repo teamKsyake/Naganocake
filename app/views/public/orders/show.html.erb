@@ -1,0 +1,9 @@
+<!-- app/views/public/orders/show.html.erb -->
+<h1>注文詳細</h1>
+
+<p>注文番号: <%= @order.id %></p>
+<p>支払方法: <%= @order.payment_method_i18n %></p>
+<p>郵便番号: <%= @order.postcode %></p>
+<p>住所: <%= @order.address %></p>
+<p>宛名: <%= @order.name %></p>
+<p>ステータス: <%= @order.status_i18n %></p>

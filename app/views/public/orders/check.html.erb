@@ -1,2 +1,99 @@
-<h1>Public::Orders#check</h1>
-<p>Find me in app/views/public/orders/check.html.erb</p>
+<style>
+  /* スタイルの定義 */
+  .table-container {
+    display: flex;
+  }
+
+  .item-table {
+    flex: 2;
+  }
+
+  .price-table {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  /* ボタンを中央に配置するためのスタイル */
+  .center-button {
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <h2 style="color: #666;">注文情報確認</h2>
+
+      <!-- 注文内容の表示 -->
+      <div class="table-container">
+        <div class="item-table">
+          <table class="table table-bordered border-dark">
+            <thead class="table-light">
+              <tr>
+                <th>商品名</th>
+                <th class="text-right">単価(税込)</th>
+                <th class="text-right">数量</th>
+                <th class="text-right">小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_customer.cart_items.each do |cart_item| %>
+                <tr>
+                  <td><%= cart_item.item.name %></td>
+                  <td class="text-right"><%= cart_item.item.with_tax_price %>円</td>
+                  <td class="text-right"><%= cart_item.amount %></td>
+                  <td class="text-right"><%= cart_item.subtotal_price %>円</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 送料や合計金額を表として表示 -->
+        <div class="price-table">
+          <table class="table table-bordered border-dark">
+            <tbody>
+              <tr>
+                <td colspan="2">送料：</td>
+                <td class="text-right"><%= @order.postage %></td>
+              </tr>
+              <tr>
+                <td colspan="2">商品合計：</td>
+                <td class="text-right"><%= @order.total_amount %></td>
+              </tr>
+              <tr>
+                <td colspan="2">請求金額：</td>
+                <td class="text-right"><%= @order.total_amount + @order.postage %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 支払方法の表示 -->
+      <h2 style="color: black; font-size: 1.2rem;">支払方法</h2>
+      <p style="color: black; font-size: 1rem;"><%= @order.payment_method_i18n %></p>
+
+      <!-- お届け先の表示 -->
+      <h2 style="color: #666;">お届け先</h2>
+      <div class="col-md-7">〒<%= @order.postcode %><%= @order.address %><br>
+        <%= @order.name %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="center-button"> <!-- ボタンを中央に配置するためのクラスを追加 -->
+  <%= form_with model: @order, url: "/orders", method: :post do |f| %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.hidden_field :postcode, value: @order.postcode %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :name, value: @order.name  %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.hidden_field :total_amount, value: @order.total_amount %>
+    <%= f.hidden_field :postage, value: @order.postage %>
+  <!-- 注文を確定するボタン -->
+    <%= f.submit "注文を確定する", class: "btn btn-primary" %>
+  <% end %>
+
+</div>

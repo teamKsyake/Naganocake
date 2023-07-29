@@ -1,2 +1,72 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class ="col-sm-12 mb-5">
+      <h3>商品詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+     <%= image_tag @item.get_image, size: "250x200", style: "object-fit: cover;" %>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-4">
+          <div><strong>商品名</strong></div>
+        </div>
+        <div class="col-sm-8 mb-3">
+          <%= @item.name %>
+        </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-4">
+         <div><strong>商品説明</strong></div>
+       </div>
+       <div class="col-sm-8 mb-3">
+         <%= @item.introduction %>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-4">
+         <div><strong>ジャンル</strong></div>
+       </div>
+       <div class="col-sm-8 mb-3">
+         <%= Genre.find(@item.genre_id).name %>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-4">
+         <div><strong>税込価格(税抜価格)</strong></div>
+       </div>
+       <div class="col-sm-8 mb-3">
+         <p><%= @item.price %>円</p>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-4">
+         <div><strong>販売ステータス</strong></div>
+       </div>
+       <div class="col-sm-8 mb-5">
+         <% if @item.is_available %>
+           <p>販売中</p>
+         <% else %>
+           <p>販売停止中</p>
+         <% end %>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-sm-6">
+         <%= link_to "編集する", edit_admin_item_path, class: "btn btn-primary" %>
+       </div>
+       <div class="col-sm-6">
+         <%= link_to "商品一覧", admin_items_path, class: "btn btn-primary" %>
+       </div>
+     </div>
+   </div>
+  </div>
+</div>
