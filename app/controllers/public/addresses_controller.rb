@@ -11,7 +11,7 @@ class Public::AddressesController < ApplicationController
     @address.customer_id = current_customer.id
     @addesses = current_customer.addresses
 
-    if @address.save
+    if @address.save!
       flash.now[:notice] = "新規配送先を登録しました。"
       redirect_to addresses_path
     else

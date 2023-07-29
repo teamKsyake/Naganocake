@@ -100,3 +100,30 @@
 /*  color: #A52A2A;*/
 /*}*/
 
+.centering_parent {
+    padding: 30px;              /* 余白指定 */
+    text-align:  center;        /* 中央寄せ */
+    background-color: #DCDCDC;    /* 背景色指定 */
+    height: 400px;              /* 高さ指定 */
+}
+
+.centering_item {
+    background-color: #B3424A;  /* 背景色指定 */
+}
+
+.label {
+ display: inline-brock;
+ text-align: right;
+ width: 300px;
+}
+
+.input[type="email"] {
+ width: 300px;
+ height: 40px;
+}
+
+.input[type="password"] {
+ width: 300px;
+ height: 40px;
+}
+
