@@ -1,6 +1,6 @@
 # app/controllers/public/orders_controller.rb
 class Public::OrdersController < ApplicationController
-before_action :check, only: [:new]
+# before_action :check, only: [:new]
   def new
     @order = Order.new
     @order.cart_items = current_customer.cart_items # カート内の商品情報を@orderに関連付ける
@@ -80,8 +80,9 @@ before_action :check, only: [:new]
     @order = current_customer.orders.find(params[:id])
   end
 
-  def check
-    if current_customer.cart_items.nil?
-      redirect_to cart_items_path
-    end
+  # def check
+  #   if current_customer.cart_items.nil?
+  #     redirect_to cart_items_path
+  #   end
+  # end
 end

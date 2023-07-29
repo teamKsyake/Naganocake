@@ -53,14 +53,18 @@
           <table class="table table-bordered bg-light">
             <tbody>
               <tr>
-                <td class="active">合計金額</td>
-                <td class="text-right"><%= @customer.cart_item_sum %>円</td>
-                 <!--カート内商品合計金額を求めるメソッドを会員モデルに定義しています。-->
-              </tr>
-            </tbody>
-          </table>
-        </table>
-      </div>
-    </div>
+         <th class="active">合計金額</th>
+       <td class="text-right"><%= @customer.cart_item_sum %>円</td>
+        <!--カート内商品合計金額を求めるメソッドを会員モデルに定義しています。-->
+      </tr>
+     </tbody>
+    </table>
+   </div>
   </div>
+  <% if current_customer.cart_items.present? %>
+  <div class="create-order-btn-wrapper col-xs-4 col-xs-offset-4 mx-auto text-center md-3">
+   <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success" %>
+  </div>
+  <% end %>
+ </div>
 </div>
