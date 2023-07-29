@@ -31,26 +31,9 @@ class Admin::OrdersController < ApplicationController
     @item_orders = @order.item_orders
   end
 
-    private
-
-    def order_params
-      params.require(:order).permit(:name, :postcode, :address, :postage, :total_amount, :payment_method, :status)
-    end
-
-  # def order_status_ja(status)#追加した部分（注文ステータスの表記分岐）
-  #   case status
-  #   when "awaiting_payment"
-  #     "入金待ち"
-  #   when "confirmed_payment"
-  #     "入金確認"
-  #   when "in_production"
-  #     "製作中"
-  #   when "preparing_to_ship"
-  #     "発送準備中"
-  #   when "done"
-  #     "発送済"
-  #   else
-  #     "不明"
-  #   end
-  # end
+  private
+  
+  def order_params
+    params.require(:order).permit(:name, :postcode, :address, :postage, :total_amount, :payment_method, :status)
+  end
 end

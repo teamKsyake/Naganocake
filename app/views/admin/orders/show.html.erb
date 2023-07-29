@@ -20,11 +20,7 @@
               <tr>
                 <th class="col-xs-3 row-title">支払い方法</th>
                 <td class="col-xs-9">
-                  <% if @order.payment_method == 0 %>
-                    <p>クレジットカード</p>
-                  <% else %>
-                    <p>銀行振込</p>
-                  <% end %>
+                  <%= @order.payment_method_i18n %>
                 </td>
 
               </tr>
