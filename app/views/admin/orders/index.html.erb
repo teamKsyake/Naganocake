@@ -19,7 +19,11 @@
           </td>
           <td><%= full_name(order.customer) %></td>
           <td><%= order.order_details.count %></td>
-          <td><%= order.status_i18n %></td>
+          <td><%= order.statuses_i18n %></td>
+          <!--<td><%#= I18n.t("enums.order.status.#{order.status}") %></td>-->
+          <!--<td><%#= Order.statuses.key(order.status).to_s.humanize %></td>-->
+          <!--<td><%#= order_status_jp(order.status) %></td>-->
+          <!--<td><%#= order.status %></td>-->
         </tr>
         <% end %>
       </tbody>

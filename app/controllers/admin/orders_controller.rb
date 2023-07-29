@@ -28,12 +28,12 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @item_oders = @order.item_orders
+    @item_orders = @order.item_orders
   end
 
-    private
-
-    def order_params
-      params.require(:order).permit(:status)
-    end
+  private
+  
+  def order_params
+    params.require(:order).permit(:name, :postcode, :address, :postage, :total_amount, :payment_method, :status)
+  end
 end
