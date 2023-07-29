@@ -3,9 +3,9 @@
     <h4 class="cart-index-title bg-light d-inline px-4">ショッピングカート</h4>
 
     <!--サクセスメッセージを表示する-->
-    <% if flash[:notice] %>
-    <p class="success-message"><%= flash[:notice] %></p>
-    <% end %>
+    <!--<%# if flash[:notice] %>-->
+    <!--<p class="success-message"><%#= flash[:notice] %></p>-->
+    <!--<%# end %>-->
 
     <div class="btn-box text-right pb-2">
       <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class:"btn btn-danger" %>
